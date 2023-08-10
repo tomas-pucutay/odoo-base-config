@@ -2,7 +2,7 @@ version: '3'
 services:
     odoo:
         container_name: odoo
-        image: odoo:14
+        image: odoo:${ODOO_VERSION}
         depends_on:
             - db
         volumes:
@@ -13,11 +13,13 @@ services:
             - "8069:8069"
     db:
         container_name: postgres
-        image: postgres:12
+        image: postgres:${DB_VERSION}
+        env_file:
+            - .env
         environment:
             - POSTGRES_DB=postgres
-            - POSTGRES_PASSWORD=<db-password>
-            - POSTGRES_USER=<db-name>
+            - POSTGRES_PASSWORD=${DB_PASS}
+            - POSTGRES_USER=${DB_NAME}
             - PGDATA=/var/lib/postgresql/data/pgdata
         ports:
             - "5432:5432"
@@ -26,6 +28,8 @@ services:
     nginx:
         container_name: nginx
         image: nginx:latest
+        env_file:
+            - .env
         restart: unless-stopped
         ports:
             - 80:80

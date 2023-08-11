@@ -1,0 +1,31 @@
+version: '3'
+services:
+    odoo:
+        container_name: odoo
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./addons-extra:/mnt/extra-addons
+            - ./OpenUpgrade:/mnt/OpenUpgrade
+            - ./config/odoo:/etc/odoo
+            - odoo-web-data:/var/lib/odoo
+        ports:
+            - "${LOCAL_PORT}:8069"
+    db:
+        container_name: postgres
+        image: postgres:${DB_VERSION}
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_PASSWORD=${DB_PASS}
+            - POSTGRES_USER=${DB_NAME}
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        ports:
+            - "5432:5432"
+        volumes:
+            - odoo-db3-data:/var/lib/postgresql/data/pgdata
+volumes:
+    odoo-web-data:
+    odoo-db3-data:

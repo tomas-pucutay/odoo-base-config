@@ -1,0 +1,7 @@
+[options]
+; This is the password that allows database operations:
+admin_passwd = ${ADMIN_PASS}
+addons_path = /mnt/extra-addons, /mnt/OpenUpgrade
+db_host = postgres
+db_user = ${DB_NAME}
+db_password = ${DB_PASS}

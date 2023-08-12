@@ -19,7 +19,7 @@ Steps:
    The script will update it in case some of them are from OCA.
 6. Execute start.sh (Make sure it has execute permissions).
 7. Load the database from old Odoo, enter with (localhost or public IP):8069.
-8. Execute: sudo docker exec odoo odoo --database=<db-name> --upgrade-path=/mnt/OpenUpgrade/openupgrade_scripts/scripts --load=base,web,openupgrade_framework --update all --stop-after-init
+8. Execute: sudo docker exec odoo odoo --database=[db-name] --upgrade-path=/mnt/OpenUpgrade/openupgrade_scripts/scripts --load=base,web,openupgrade_framework --update all --stop-after-init
 
 Some bugs:
 

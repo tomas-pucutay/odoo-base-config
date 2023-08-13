@@ -8,4 +8,3 @@
 * Bhavesh Odedra <bodedra@opensourceintegrators.com>
 * Hardik Suthar <hsuthar@opensourceintegrators.com>
 * Kitti U. <kittiu@ecosoft.co.th>
-* Bogdan Valentin Gabor <valentin.gabor@bt-group.com>

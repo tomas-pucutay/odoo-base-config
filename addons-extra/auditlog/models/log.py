@@ -19,12 +19,8 @@ class AuditlogLog(models.Model):
     user_id = fields.Many2one("res.users", string="User")
     method = fields.Char(size=64)
     line_ids = fields.One2many("auditlog.log.line", "log_id", string="Fields updated")
-    http_session_id = fields.Many2one(
-        "auditlog.http.session", string="Session", index=True
-    )
-    http_request_id = fields.Many2one(
-        "auditlog.http.request", string="HTTP Request", index=True
-    )
+    http_session_id = fields.Many2one("auditlog.http.session", string="Session")
+    http_request_id = fields.Many2one("auditlog.http.request", string="HTTP Request")
     log_type = fields.Selection(
         [("full", "Full log"), ("fast", "Fast log")], string="Type"
     )
@@ -35,7 +31,7 @@ class AuditlogLog(models.Model):
         for vals in vals_list:
             if not vals.get("model_id"):
                 raise UserError(_("No model defined to create log."))
-            model = self.env["ir.model"].sudo().browse(vals["model_id"])
+            model = self.env["ir.model"].browse(vals["model_id"])
             vals.update({"model_name": model.name, "model_model": model.model})
         return super().create(vals_list)
 
@@ -45,7 +41,7 @@ class AuditlogLog(models.Model):
         if "model_id" in vals:
             if not vals["model_id"]:
                 raise UserError(_("The field 'model_id' cannot be empty."))
-            model = self.env["ir.model"].sudo().browse(vals["model_id"])
+            model = self.env["ir.model"].browse(vals["model_id"])
             vals.update({"model_name": model.name, "model_model": model.model})
         return super().write(vals)
 
@@ -66,6 +62,17 @@ class AuditlogLogLine(models.Model):
     new_value_text = fields.Text("New value Text")
     field_name = fields.Char("Technical name", readonly=True)
     field_description = fields.Char("Description", readonly=True)
+    # From log auditlog.log
+    name = fields.Char(related="log_id.name", store=True)
+    model_id = fields.Many2one(related="log_id.model_id", store=True)
+    model_name = fields.Char(related="log_id.model_name", store=True)
+    model_model = fields.Char(related="log_id.model_model", store=True)
+    res_id = fields.Integer(related="log_id.res_id", store=True)
+    user_id = fields.Many2one(related="log_id.user_id", store=True)
+    method = fields.Char(related="log_id.method", store=True)
+    http_session_id = fields.Many2one(related="log_id.http_session_id", store=True)
+    http_request_id = fields.Many2one(related="log_id.http_request_id", store=True)
+    log_type = fields.Selection(related="log_id.log_type", store=True)
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -74,7 +81,7 @@ class AuditlogLogLine(models.Model):
         for vals in vals_list:
             if not vals.get("field_id"):
                 raise UserError(_("No field defined to create line."))
-            field = self.env["ir.model.fields"].sudo().browse(vals["field_id"])
+            field = self.env["ir.model.fields"].browse(vals["field_id"])
             vals.update(
                 {"field_name": field.name, "field_description": field.field_description}
             )
@@ -86,7 +93,7 @@ class AuditlogLogLine(models.Model):
         if "field_id" in vals:
             if not vals["field_id"]:
                 raise UserError(_("The field 'field_id' cannot be empty."))
-            field = self.env["ir.model.fields"].sudo().browse(vals["field_id"])
+            field = self.env["ir.model.fields"].browse(vals["field_id"])
             vals.update(
                 {"field_name": field.name, "field_description": field.field_description}
             )

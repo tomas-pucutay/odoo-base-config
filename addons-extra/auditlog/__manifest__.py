@@ -3,14 +3,13 @@
 
 {
     "name": "Audit Log",
-    "version": "16.0.2.0.1",
-    "author": "ABF OSIELL, Odoo Community Association (OCA)",
+    "version": "14.0.1.2.0",
+    "author": "ABF OSIELL,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/server-tools",
     "category": "Tools",
     "depends": ["base"],
     "data": [
-        "security/res_groups.xml",
         "security/ir.model.access.csv",
         "data/ir_cron.xml",
         "views/auditlog_view.xml",

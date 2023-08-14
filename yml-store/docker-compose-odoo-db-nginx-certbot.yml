@@ -36,6 +36,16 @@ services:
             - 443:443
         volumes:
             - ./config/nginx:/etc/nginx/conf.d
+            - ./config/certbot/conf:/etc/nginx/ssl
+            - ./condig/certbot/data:/var/www/html
+    certbot:
+        container_name: certbot
+        image: certbot/certbot:latest
+        command: certonly --webroot --webroot-path=/var/www/html --email ${ADMIN_EMAIL} --agree-tos --no-eff-email -d ${SUBDOMAIN_URL}
+        volumes:
+            - ./config/certbot/conf:/etc/letsencrypt
+            - ./config/certbot/logs:/var/log/letsencrypt
+            - ./config/certbot/data:/var/www/html
 volumes:
     odoo-web-data:
     odoo-db-data:

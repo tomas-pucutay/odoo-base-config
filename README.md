@@ -17,4 +17,3 @@ Follow the next steps
 
 Considerations:
 The docker-compose with nginx requires DNS register in advance to relate the SUBDOMAIN_URL with the public IP. This will be accomplished by going to your domain provider, create an A type register, add the subdomain and the public IP.
-

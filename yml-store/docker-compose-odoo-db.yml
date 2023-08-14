@@ -10,7 +10,7 @@ services:
             - ./config/odoo:/etc/odoo
             - odoo-web-data:/var/lib/odoo
         ports:
-            - "8069:8069"
+            - "${LOCAL_PORT}:8069"
     db:
         container_name: postgres
         image: postgres:${DB_VERSION}

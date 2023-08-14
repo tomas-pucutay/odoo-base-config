@@ -1,3 +1,6 @@
 *.lock
 *.env
 *.conf
+config/certbot/conf/*
+config/certbot/data/*
+config/certbot/logs/*

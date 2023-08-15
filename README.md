@@ -1,5 +1,5 @@
 ## File structure
-- addons-extra: Addons to include in your Odoo deployment, if you will use a database with already some custom addons make sure they are in this place, so the install will be easy.
+- addons-extra: Addons to include in your Odoo deployment, if you will use a database with already some custom addons make sure they are in this place, so the install will be easy. Most of them are from OCA repository, except for crm_custom_field which is created in-house.
 - config: Config file for odoo, nginx, certbot.
 - yml-store: Some docker-compose.yml configurations. In the name it includes the containers every file has. By default in the main folder is the config for odoo, postgres and nginx.
 - .env.template: A file to update and rename to .env, the SUBDOMAIN_URL is exclusive for the docker compose yml with nginx.
@@ -33,4 +33,4 @@ sudo docker restart nginx
 The docker-compose with nginx requires DNS register in advance to relate the SUBDOMAIN_URL with the public IP. This will be accomplished by going to your domain provider, create an A type register, add the subdomain and the public IP.
 
 ## Bonus
-- odoo-upgrade-process: A separate and complete process to upgrade Odoo to another version, it has its own README.
+- 0 odoo-upgrade-process: A separate and complete process to upgrade Odoo to another version, it has its own README.

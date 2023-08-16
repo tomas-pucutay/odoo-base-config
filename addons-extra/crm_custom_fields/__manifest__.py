@@ -4,6 +4,8 @@
     'author' : 'tomaspucutay',
     'website': 'https://github.com/tomas-pucutay',
     'depends': ['crm'],
-    'data': [],
+    'data': [
+        'views/crm_fields_view.xml'
+    ],
     'installable': True
 }

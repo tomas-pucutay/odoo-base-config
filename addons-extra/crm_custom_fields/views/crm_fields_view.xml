@@ -7,11 +7,21 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
-            <group name="lead_priority" position="before">
-                <group>
-                    <field name="opportunity_type"/>
+                <group name="lead_priority" position="before">
+                    <group>
+                        <field name="opportunity_type"/>
+                    </group>
                 </group>
-            </group>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="crm_case_tree_view_leads">
+            <field name="name">Add custom fields as tree column</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="opportunity_type"/>
+                </field>
             </field>
         </record>
 

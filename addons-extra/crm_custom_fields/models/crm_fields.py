@@ -4,7 +4,7 @@ class CrmLead(models.Model):
     _inherit = "crm.lead"
 
     opportunity_type = fields.Char(
-        string = "Opportunity type",
+        string = "Type",
         required = True,
         index = True,
         copy = True,

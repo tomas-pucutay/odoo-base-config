@@ -11,7 +11,7 @@ class CrmLead(models.Model):
             ('s_modificación','Armado, Movilizacion y Modificacion'),
             ('s_inspeccion','Inspeccion'),             
         ],
-        string = "Type",
+        string = "Category",
         required = True,
         index = True,
         copy = True,

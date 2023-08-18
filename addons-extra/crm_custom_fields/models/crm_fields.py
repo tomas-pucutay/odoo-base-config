@@ -4,7 +4,13 @@ class CrmLead(models.Model):
     _inherit = "crm.lead"
 
     opportunity_type = fields.Selection(
-        selection = [('a', 'A'), ('b', 'B')],
+        selection = [
+            ('p_racks', 'Racks'),
+            ('p_automatizacion', 'Automatizacion'),
+            ('p_repuesto', 'Partes y Repuestos'),
+            ('s_modificación','Armado, Movilizacion y Modificacion'),
+            ('s_inspeccion','Inspeccion'),             
+        ],
         string = "Type",
         required = True,
         index = True,

@@ -34,6 +34,9 @@
                 <field name="partner_id" position="after">
                     <field name="opportunity_type"/>
                 </field>
+                <filter name="stage" position="after">
+                    <filter name="type" string="Type" domain="[]" context="{'group_by': 'opportunity_type'}"/>
+                </filter>
             </field>
         </record>
 

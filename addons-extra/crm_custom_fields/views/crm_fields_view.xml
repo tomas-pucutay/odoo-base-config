@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <group name="lead_priority" position="before">
                     <group>
-                        <field name="opportunity_type"/>
+                        <field name="op_category"/>
                     </group>
                 </group>
             </field>
@@ -21,7 +21,7 @@
             <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="opportunity_type" optional="show"/>
+                    <field name="op_category" optional="show"/>
                 </field>
             </field>
         </record>
@@ -32,10 +32,10 @@
             <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="opportunity_type"/>
+                    <field name="op_category"/>
                 </field>
                 <filter name="stage" position="after">
-                    <filter name="type" string="Type" domain="[]" context="{'group_by': 'opportunity_type'}"/>
+                    <filter name="type" string="Type" domain="[]" context="{'group_by': 'op_category'}"/>
                 </filter>
             </field>
         </record>

@@ -3,7 +3,7 @@ from odoo import models, fields
 class CrmLead(models.Model):
     _inherit = "crm.lead"
 
-    opportunity_type = fields.Selection(
+    op_category = fields.Selection(
         selection = [
             ('p_racks', 'Racks'),
             ('p_automatizacion', 'Automatizacion'),

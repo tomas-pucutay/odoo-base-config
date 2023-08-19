@@ -17,3 +17,11 @@ class CrmLead(models.Model):
         copy = True,
         store = True
         )
+    
+    op_analytic_account = fields.Many2one(
+        comodel_name="account.analytic.account",
+        string="Analytic Account",
+        index = True,
+        copy = True,
+        store = True
+    )

@@ -10,6 +10,7 @@
                 <group name="lead_priority" position="before">
                     <group>
                         <field name="op_category"/>
+                        <field name="op_analytic_account" widget="many2one"/>
                     </group>
                 </group>
             </field>

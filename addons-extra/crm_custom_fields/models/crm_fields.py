@@ -8,8 +8,10 @@ class CrmLead(models.Model):
             ('p_racks', 'Racks'),
             ('p_automatizacion', 'Automatizacion'),
             ('p_repuesto', 'Partes y Repuestos'),
-            ('s_modificación','Armado, Movilizacion y Modificacion'),
-            ('s_inspeccion','Inspeccion'),             
+            ('s_modificación', 'Armado, Movilizacion y Modificacion'),
+            ('s_mantenimiento', 'Mantenimiento de Equipos'),
+            ('s_inspeccion', 'Inspeccion'),
+            ('otros', 'Otros')
         ],
         string = "Category",
         required = True,

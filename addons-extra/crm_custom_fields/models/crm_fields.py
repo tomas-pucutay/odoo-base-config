@@ -14,7 +14,6 @@ class CrmLead(models.Model):
             ('otros', 'Otros')
         ],
         string = "Category",
-        required = True,
         index = True,
         copy = True,
         store = True
